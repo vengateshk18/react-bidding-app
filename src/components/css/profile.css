@@ -1,0 +1,49 @@
+.profile{
+    background-color:peru;
+    box-shadow:blueviolet;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+.logout{
+    background-color:blue;
+    color:white;
+    cursor: pointer;
+    text-align: center;
+    padding:10px 20px;
+    border-radius: 5px;}
+    /* text-decoration: none;
+} */
+.logout:hover{
+    background-color: red;
+}
+.center-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #4CAF50;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }
+  

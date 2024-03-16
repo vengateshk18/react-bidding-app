@@ -1,0 +1,29 @@
+/* CSS for Header/Navbar */
+header {
+    background-color: #333; /* Dark background color */
+    padding: 17px 0; /* Add padding for spacing */
+  }
+  
+  nav {
+    display: flex; /* Use flexbox for navigation items */
+    justify-content: center; /* Center-align navigation items horizontally */
+  }
+  
+  nav li {
+    margin-right: 20px; /* Add spacing between list items */
+  }
+  
+  nav li:last-child {
+    margin-right: 0; /* Remove margin from the last list item */
+  }
+  
+  nav a {
+    color: #fff; /* White text color for links */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 16px; /* Set font size for links */
+  }
+  
+  nav a:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
