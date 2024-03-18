@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.views import LoginView
-from .serializer import UserSerializer, ProfileSerializer,CategorySerializer,ListingSerializer
-from .models import Profile,Category,Listing,WatchList
+from .serializer import UserSerializer, ProfileSerializer,CategorySerializer,ListingSerializer,WatchListSerializer
+from .models import Profile,Category,Listing,WatchList,Bidding
 from django.contrib.auth.models import User
 from datetime import datetime
 import pytz
@@ -108,3 +108,34 @@ def add_to_watchlist(request):
     except Exception as e:
         print(e+"->")
         return Response("there is some problem",status=400)
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])   
+def user_watch_list(request):
+    profile=Profile.objects.get(user=request.user)
+    lists=WatchList.objects.filter(user=profile)
+    serializer=WatchListSerializer(lists,many=True)
+    return Response(serializer.data,status=200)
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def user_delete_watchlist_item(request):
+    try:
+        id=request.POST.get('id','')
+        watchlist_item=WatchList.objects.get(id=id)
+        watchlist_item.delete()
+        return Response({'message':'deleted item successfully'},status=200)
+    except Exception as e:
+        return Response({'message':f"there might be some issue > {e}"},status=400)
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])   
+def get_specific_list(request,pk):
+    try:
+        list=Listing.objects.get(id=pk)
+        serializer=ListingSerializer(list)
+        bidlist=0
+        if not Bidding.objects.filter(listing=list):
+            bidlist=Bidding.objects.filter(listing=list).count()
+        data=serializer.data
+        data['count']=bidlist
+        return Response(data,status=200)
+    except Exception as e:
+        return Response({'message':f"there is some proble while fetching the list > {e}"},status=400)

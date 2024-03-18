@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import Profile,Category,Listing
+from .models import Profile,Category,Listing,WatchList
 
 User = get_user_model()
 
@@ -74,4 +74,26 @@ class ListingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Listing
         fields = ['id', 'user_username', 'user_email', 'category', 'product_title', 'description', 'price', 'list_img', 'min_bid', 'start_date', 'end_date', 'is_active']
+
+class WatchListSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='user.user.username')
+    product_title = serializers.ReadOnlyField(source='listing.product_title')
+    description = serializers.ReadOnlyField(source='listing.description')
+    price = serializers.ReadOnlyField(source='listing.price')
+    list_img_url = serializers.SerializerMethodField()
+    start_date = serializers.ReadOnlyField(source='listing.start_date')
+    end_date = serializers.ReadOnlyField(source='listing.end_date')
+    is_active = serializers.ReadOnlyField(source='listing.is_active')
+    category = serializers.SlugRelatedField(slug_field='category', source='listing.category', queryset=Category.objects.all())
+
+    class Meta:
+        model = WatchList
+        fields = ['id', 'user', 'product_title', 'description', 'price', 'list_img_url', 'start_date', 'end_date', 'is_active', 'category']
+
+    def get_list_img_url(self, obj):
+        if obj.listing.list_img:
+            return obj.listing.list_img.url
+        return None
+
+
 

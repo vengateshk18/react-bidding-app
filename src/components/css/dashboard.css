@@ -51,3 +51,15 @@
 .product-actions button:hover {
     background-color: #0056b3;
 }
+.delete-from-watchlist {
+    background-color: red !important;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.delete-from-watchlist:hover {
+    background-color: darkred;
+}

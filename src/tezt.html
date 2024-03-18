@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modal with Number Input</title>
+<style>
+  /* Styles for modal and overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 300px;
+    width: 100%;
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .input-container {
+    margin-bottom: 20px;
+  }
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+</style>
+</head>
+<body>
+
+<button onclick="openModal()">Open Modal</button>
+
+<div id="modal" class="modal-overlay" style="display:none;">
+  <div class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Enter a Number</h2>
+    <div class="input-container">
+      <input type="number" id="numberInput" placeholder="Enter a number">
+      <div id="errorMessage" class="error-message" style="display:none;"></div>
+    </div>
+    <button onclick="submitNumber()">Submit</button>
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+function submitNumber() {
+  var number = document.getElementById('numberInput').value;
+  var errorMessage = document.getElementById('errorMessage');
+  
+  // Check if number is valid
+  if (number === '' || isNaN(number)) {
+    errorMessage.innerText = 'Please enter a valid number.';
+    errorMessage.style.display = 'block';
+    return;
+  }
+  
+  // Check if number is within expected range
+  var expectedNumber = 100; // Change this to your expected number
+  if (parseInt(number) > expectedNumber) {
+    errorMessage.innerText = 'Number should not exceed ' + expectedNumber + '.';
+    errorMessage.style.display = 'block';
+    return;
+  }
+  
+  // If number is valid, do something with it
+  console.log('Submitted number:', number);
+  closeModal();
+}
+</script>
+
+</body>
+</html>

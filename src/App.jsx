@@ -9,6 +9,7 @@ import Profile from "./components/profile"
 import CurrentBid from "./components/currentbid"
 import  WatchList from "./components/watchlist"
 import CreateList from "./components/createlist"
+import BidList from "./components/bidList"
 function App(){
   return(
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App(){
            <Route path="/currentbid" element={<CurrentBid/>}></Route>
            <Route path="/watchlist" element={<WatchList/>}></Route>
            <Route path="/createlist" element={<CreateList/>}></Route>
+           <Route path="/bid/:itemId" element={<BidList/>}></Route>
         </Routes>
     </BrowserRouter>
   )

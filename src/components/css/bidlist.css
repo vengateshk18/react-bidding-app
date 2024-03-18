@@ -1,0 +1,50 @@
+.return-button{
+    margin:10px 10px;
+    padding: 5px;
+    cursor: pointer;
+    background-color:#007bff;
+    border-radius: 5px;
+    border: blue;
+    color: rgb(254, 236, 236);
+}
+.return-button:hover{
+    background-color:red;
+    color: white;
+}
+.product-Info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+/* Style for input number */
+.input-number {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for submit button */
+.submit-button {
+    display: block;
+    width: 50%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+.details{
+    margin-left: 20px;
+}

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import './css/dashboard.css'; // Import CSS for styling
-
+import BidList from "./bidList";
 function DashBoard() {
     const [lists, setLists] = useState([]);
     const navigate = useNavigate();
@@ -58,9 +58,8 @@ function DashBoard() {
     };
     
     
-    const handleBid = (productId,Price,End_date) => {
-        // Implement logic for bidding on the product
-        console.log(`Bidding on product ${productId}`);
+    const handleBid = (productId) => {
+       navigate(`/bid/${productId}`)
     };
 
     return (
@@ -80,7 +79,7 @@ function DashBoard() {
                             <p><strong>End Date:</strong> {list.end_date}</p>
                             <div className="product-actions">
                                 <button onClick={() => handleAddToWatchlist(list.id)}>Add to Watchlist</button>
-                                <button onClick={() => handleBid(list.id,list.price,list.end_date) }>Bid</button>
+                                <button onClick={() => handleBid(list.id) }>Bid</button>
                             </div>
                         </div>
                     </div>
