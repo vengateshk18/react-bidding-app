@@ -1,0 +1,47 @@
+/* CSS for CreateList component */
+.create-list-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.create-list-container .form-group {
+  margin-bottom: 20px;
+}
+
+.create-list-container label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333; /* Dark text color */
+}
+
+.create-list-container input[type="text"],
+.create-list-container input[type="number"],
+.create-list-container textarea,
+.create-list-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333; /* Dark text color */
+}
+
+.create-list-container input[type="file"] {
+  width: 100%;
+  padding: 10px;
+}
+
+.create-list-container button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-list-container button:hover {
+  background-color: #0056b3; /* Darker blue background color on hover */
+}

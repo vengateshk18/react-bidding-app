@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import Profile
+from .models import Profile,Category,Listing
 
 User = get_user_model()
 
@@ -63,3 +63,15 @@ class UserSerializer(serializers.ModelSerializer):
             profile.save()
         
         return instance
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Category
+        fields=['category']
+class ListingSerializer(serializers.ModelSerializer):
+    user_username = serializers.ReadOnlyField(source='user.user.username')
+    user_email = serializers.ReadOnlyField(source='user.user.email')
+    category = serializers.SlugRelatedField(slug_field='category', queryset=Category.objects.all())
+    class Meta:
+        model = Listing
+        fields = ['id', 'user_username', 'user_email', 'category', 'product_title', 'description', 'price', 'list_img', 'min_bid', 'start_date', 'end_date', 'is_active']
+

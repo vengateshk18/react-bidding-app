@@ -27,9 +27,10 @@ class Listing(models.Model):
     product_title = models.CharField(max_length=250)
     description = models.TextField(null=True, blank=True)
     price = models.IntegerField()
-    min_bid = models.IntegerField()
+    list_img=models.ImageField(upload_to="list_images",default='blank_profile_pic.png',null=True,blank=True)
+    min_bid = models.IntegerField(null=True,blank=True)
     start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField()
+    end_date = models.DateField()
     is_active = models.BooleanField(default=True)
 
     def __str__(self) -> str:

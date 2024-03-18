@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './header';
 import { useNavigate } from 'react-router-dom';
 import "./css/profile.css"
+
 function Profile() {
   const navigate = useNavigate();
   const [profileData, setProfileData] = useState(null); // State to hold profile data
@@ -13,7 +14,7 @@ function Profile() {
     } else {
       fetchProfileData(token);
     }
-  }, [navigate]);
+  }, []); // Empty dependency array to ensure the effect runs only once
 
   const fetchProfileData = (token) => {
     fetch('http://localhost:8000/user-details', {
@@ -45,7 +46,7 @@ function Profile() {
   if (!profileData) {
     return <div>Loading...</div>; // Show loading indicator while fetching data
   }
-  console.log(profileData)
+
   const imageUrl = `http://localhost:8000${profileData.profile_img}`;
   return (
     <div>
