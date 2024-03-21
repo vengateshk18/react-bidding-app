@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import './css/dashboard.css'; // Import CSS for styling
 import BidList from "./bidList";
+import Footer from "./footer";
 function DashBoard() {
     const [lists, setLists] = useState([]);
     const navigate = useNavigate();
@@ -87,6 +88,7 @@ function DashBoard() {
                 ))}
                 <br />
             </div>
+            <Footer/>
         </div>
     );
 }
